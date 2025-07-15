@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .liquid-glass {
+    position: relative;
+    border-radius: 28px;
+    box-shadow: 0px 6px 24px var(24px) rgba(0,0,0,0.2);
+    isolation: isolate;
+    overflow: hidden;
+    
+    --shadow-offset: 0;
+    --shadow-blur: 20px;
+    --shadow-spread: -5px;
+    --shadow-color: rgba(255,255,255,0.7);
+    --tint-color: 255,255,255;
+    --tint-opacity: 0.2;
+    --frost-blur: 0px;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 28px;
+    box-shadow: inset var(--shadow-offset) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+    background-color: rgba(var(--tint-color), var(--tint-opacity));
+    pointer-events: none;
+  }
+
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 28px;
+    backdrop-filter: blur(var(--frost-blur));
+    -webkit-backdrop-filter: blur(var(--frost-blur));
+    filter: url(#glass-distortion);
+    -webkit-filter: url(#glass-distortion);
+    pointer-events: none;
+    isolation: isolate;
+  }
+}
