@@ -16,11 +16,9 @@ const TitleBar = ({setPosition}: TitleBarProps) => {
         x: x - relativePos.x,
         y: y - relativePos.y,
       });
-      if (isDown === false) {
-        setIsDragging(isDown);
-      }
+      setIsDragging(isDown);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDown, x, y]);
 
   return (
